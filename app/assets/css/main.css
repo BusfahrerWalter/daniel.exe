@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+	--page-scroll-duration: .5s;
+	--page-scroll-curve: ease-in-out;
+}
+
+.main {
+	/* Force the height value to be something else then 'auto' the actual height will be enforced by min-height */
+	height: 0px;
+
+	&:has(.page-animated) {
+		overflow: hidden;
+	}
+}
+
+.main-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	& > * {
+		position: absolute;
+		inset: 0;
+	}
+}
+
+.page-scroll-in-r {
+	animation: page-scroll-in var(--page-scroll-duration) var(--page-scroll-curve) forwards;
+	animation-delay: .25s;
+	translate: 110% 0;
+}
+
+.page-scroll-in-l {
+	animation: page-scroll-in var(--page-scroll-duration) var(--page-scroll-curve) forwards;
+	animation-delay: .25s;
+	translate: -110% 0;
+}
+
+.page-scroll-out-l {
+	animation: page-scroll-out-l var(--page-scroll-duration) var(--page-scroll-curve) forwards;
+	translate: 0 0;
+}
+
+.page-scroll-out-r {
+	animation: page-scroll-out-r var(--page-scroll-duration) var(--page-scroll-curve) forwards;
+	translate: 0 0;
+}
+
+@keyframes page-scroll-in {
+	from {
+		scale: .9;
+	}
+	50% {
+		translate: 0 0;
+		scale: .9;
+	}
+	80% {
+		translate: 0 0;
+		scale: .9;
+	}
+	to {
+		translate: 0 0;
+		scale: 1;
+	}
+}
+
+@keyframes page-scroll-out-l {
+	from {
+		scale: 1;
+	}
+	20% {
+		translate: 0 0;
+		scale: .9;
+	}
+	50% {
+		translate: 0 0;
+		scale: .9;
+	}
+	to {
+		translate: -110% 0;
+		scale: .9;
+	}
+}
+
+
+@keyframes page-scroll-out-r {
+	from {
+		scale: 1;
+	}
+	20% {
+		translate: 0 0;
+		scale: .9;
+	}
+	50% {
+		translate: 0 0;
+		scale: .9;
+	}
+	to {
+		translate: 110% 0;
+		scale: .9;
+	}
+}
