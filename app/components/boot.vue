@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, defineEmits } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { TerminalWriter } from '~/core/TerminalWriter';
 import { random } from '~/core/Util';
 
@@ -121,7 +121,7 @@ async function boot(el: HTMLElement, cursorEl: HTMLElement) {
 	</div>
 
 	<div class="fixed loading-spinner" :style="{ display: showSpinner ? 'block' : 'none' }">
-		<UIcon name="tabler:loader-2" class="text-3xl animate-spin mb-2" />
+		<UIcon name="tabler:loader-2" class="text-3xl animate-spin" />
 	</div>
 </template>
 

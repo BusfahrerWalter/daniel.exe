@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Boot from './components/boot.vue';
-import Main from './components/main.vue';
 import { ref } from 'vue';
 import { getUrlParam } from './core/Util';
 

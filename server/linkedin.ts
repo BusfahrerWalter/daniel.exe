@@ -2,6 +2,9 @@ import { SnapshotData, SnapshotDomain } from './linkedin.d';
 import { dropSensitiveData, SanitizedData } from "./sanitize";
 
 const apiKey = process.env.LINKEDIN_API_KEY;
+if (!apiKey) {
+	throw new Error('No LINKEDIN_API_KEY environment variable found');
+}
 
 export async function requestRawDomainData(domain: SnapshotDomain): Promise<any> {
 	const params = new URLSearchParams();
@@ -54,15 +57,20 @@ function transformKey(key: string): string {
 
 export async function requestDomainData<T extends SnapshotDomain>(domain: T): Promise<SanitizedData<SnapshotData[T]>> {
 	const raw = await requestRawDomainData(domain);
-	const snapshots = raw.elements[0].snapshotData;
+	if (!raw || raw.status >= 400) {
+		console.error('[Error] Error while fetching linkedin API:', raw.message);
+		throw new Error(raw.message);
+	}
 
-	console.log("LINKEDIN RAW", JSON.stringify(raw, null, 2));
+	const snapshots = raw.elements?.[0]?.snapshotData;
+
+	console.log('LINKEDIN RAW', JSON.stringify(raw, null, 2));
 	return dropSensitiveData(cleanObjectKeys(snapshots)) as any;
 }
 
 export async function requestDomainDataFirst<T extends SnapshotDomain>(domain: T): Promise<SanitizedData<SnapshotData[T]>> {
 	const snapshot = await requestDomainData(domain);
-	return snapshot[0] ?? null;
+	return snapshot?.[0] ?? null;
 }
 
 export async function getProfileInfo() {

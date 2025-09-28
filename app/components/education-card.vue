@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import type { EducationInfo } from '~/core/DataManager';
-import GenericCard from './generic-card.vue';
 
 defineProps<{
 	value: EducationInfo

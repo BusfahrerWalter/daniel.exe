@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
 import { duration } from '~/core/Util';
 
 const props = defineProps<{
