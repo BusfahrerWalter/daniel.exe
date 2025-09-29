@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { TerminalWriter } from '~/core/TerminalWriter';
 import { random } from '~/core/Util';
 

@@ -14,7 +14,8 @@ export default defineNuxtConfig({
 		'@nuxt/ui'
 	],
 	css: [
-		'~/assets/css/main.css'
+		'~/assets/css/main.css',
+		'~/assets/css/md.css'
 	],
 	routeRules: {
 		'/': {

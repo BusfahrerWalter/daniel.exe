@@ -1,8 +1,6 @@
 export const sensitiveKeys = {
-	zipCode: true,
 	phoneNumber: true,
 	emailAddress: true,
-	address: true
 };
 
 type Data<T> = Omit<T, keyof typeof sensitiveKeys>;

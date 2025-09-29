@@ -1,3 +1,4 @@
+import { fetchWithCache } from './fetch';
 import { SnapshotData, SnapshotDomain } from './linkedin.d';
 import { dropSensitiveData, SanitizedData } from "./sanitize";
 
@@ -9,10 +10,11 @@ if (!apiKey) {
 export async function requestRawDomainData(domain: SnapshotDomain): Promise<any> {
 	const params = new URLSearchParams();
 	params.append('q', 'criteria');
+	params.append('count', '100');
 	params.append('domain', domain);
 
 	try {
-		const res = await fetch(`https://api.linkedin.com/rest/memberSnapshotData?${params}`, {
+		const res = await fetchWithCache(`https://api.linkedin.com/rest/memberSnapshotData?${params}`, {
 			method: 'GET',
 			headers: {
 				'Authorization': `Bearer ${apiKey}`,
@@ -57,7 +59,7 @@ function transformKey(key: string): string {
 
 export async function requestDomainData<T extends SnapshotDomain>(domain: T): Promise<SanitizedData<SnapshotData[T]>> {
 	const raw = await requestRawDomainData(domain);
-	if (!raw || raw.status >= 400) {
+	if (!raw || (typeof raw.status === 'number' && raw.status >= 400)) {
 		console.error('[Error] Error while fetching linkedin API:', raw.message);
 		throw new Error(raw.message);
 	}
@@ -87,4 +89,8 @@ export async function getPositions() {
 
 export async function getEducation() {
 	return await requestDomainData('EDUCATION');
+}
+
+export async function getProjects() {
+	return await requestDomainData('PROJECTS');
 }

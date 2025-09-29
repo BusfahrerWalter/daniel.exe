@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { getUrlParam } from './core/Util';
 
-const skipBoot = getUrlParam('skipBoot') !== null;
-const bootDone = ref(skipBoot ?? false);
+const bootDone = ref(getUrlParam('skipBoot') !== null);
 
 function onBootDone() {
 	bootDone.value = true;

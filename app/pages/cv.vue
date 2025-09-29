@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import type { ContentCollectionItem } from '@nuxt/content';
-import { ref, onMounted } from 'vue';
-import { getEducation, getPositions, getSkills } from '~/core/DataManager';
-import type { EducationInfo, PositionInfo, SkillInfo } from '~/core/DataManager';
+import { getEducation, getPositions, getProfileInfo, getSkills } from '~/core/DataManager';
+import type { EducationInfo, PositionInfo, SkillInfo, ProfileInfo } from '~/core/DataManager';
 
 const headingClass = 'text-2xl font-bold mb-4 border-b border-gray-300 pb-2 dark:border-gray-700 flex items-center';
 
 const about = ref<ContentCollectionItem | null>(null);
+const info = ref<ProfileInfo | null>(null);
 const skills = ref<SkillInfo[]>([]);
 const positions = ref<PositionInfo[]>([]);
 const education = ref<EducationInfo[]>([]);
 
-onMounted(async () => {
-	[about.value, skills.value, positions.value, education.value] = await Promise.all([
-		queryCollection('content').path('/about-me').first(),
-		getSkills(),
-		getPositions(),
-		getEducation()
-	]);
-});
+[about.value, info.value, skills.value, positions.value, education.value] = await Promise.all([
+	queryCollection('content').path('/about-me').first(),
+	getProfileInfo(),
+	getSkills(),
+	getPositions(),
+	getEducation()
+]);
 </script>
-
 
 <template>
 	<div index="2">
@@ -29,7 +27,9 @@ onMounted(async () => {
 				<UIcon name="tabler:user" class="text-3xl mr-2" />
 				About Me
 			</h2>
-			<ContentRenderer v-if="about" :value="about.body" />
+			<div md-out no-heading-border>
+				<ContentRenderer v-if="about && info" :value="about" :data="info" />
+			</div>
 		</section>
 
 		<section class="skills mb-12">

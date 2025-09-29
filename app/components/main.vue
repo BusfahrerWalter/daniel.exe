@@ -10,7 +10,8 @@ const headerNav: NavigationMenuItem[] = [
 
 const items: NavigationMenuItem[] = [
 	{ label: 'Website', to: 'https://adam-sandler.de', target: '_blank' },
-	{ label: 'Source', to: 'https://github.com/BusfahrerWalter/daniel.exe', target: '_blank' }
+	{ label: 'Source', to: 'https://github.com/BusfahrerWalter/daniel.exe', target: '_blank' },
+	{ label: 'Imprint', to: '/imprint', target: '_self' }
 ];
 
 const socials = [
@@ -20,8 +21,7 @@ const socials = [
 	{ label: 'CodePen', url: 'https://codepen.io/Busfahrer_Walter', icon: 'i-simple-icons-codepen' },
 	{ label: 'HackTheBox', url: 'https://app.hackthebox.com/profile/145426', icon: 'i-simple-icons-hackthebox' },
 	{ label: 'LeetCode', url: 'https://leetcode.com/u/BusfahrerWalter', icon: 'i-simple-icons-leetcode' },
-	{ label: 'EntwicklerHeld', url: 'https://platform.entwicklerheld.de/publicprofile/c6854b8c5a3ca92c158d6b1cff199b8a', icon: 'i-simple-icons-lintcode' },
-	{ label: 'CodersRank', url: 'TODO', icon: 'i-simple-icons-codersrank' },
+	{ label: 'EntwicklerHeld', url: 'https://platform.entwicklerheld.de/publicprofile/c6854b8c5a3ca92c158d6b1cff199b8a', icon: 'i-simple-icons-lintcode' }
 ];
 
 let currentIndex!: number;
@@ -71,7 +71,7 @@ const pageTransition: TransitionProps = {
 		</UHeader>
 
 		<UMain class="main px-6 py-6 md:px-12 md:py-16">
-			<div class="main-inner">
+			<div class="main-inner max-w-screen-xl mx-auto">
 				<NuxtLayout>
 					<NuxtPage :transition="pageTransition" />
 				</NuxtLayout>
