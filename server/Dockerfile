@@ -1,7 +1,7 @@
 # =========================================================================================
 #                                          Builder
 # =========================================================================================
-FROM node:alpine as builder
+FROM node:alpine AS builder
 
 WORKDIR /app
 
@@ -13,12 +13,12 @@ RUN npm run build
 # =========================================================================================
 #                                          Runner
 # =========================================================================================
-FROM node:alpine as runner
+FROM node:alpine AS runner
 
 WORKDIR /app
 EXPOSE 3000
 
 COPY --from=builder /app/dist .
-COPY --from=builder /app/.env .
+# COPY --from=builder /app/.env .
 
 CMD ["node", "index.js"]
