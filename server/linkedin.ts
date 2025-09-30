@@ -14,6 +14,7 @@ export async function requestRawDomainData(domain: SnapshotDomain): Promise<any>
 	params.append('domain', domain);
 
 	try {
+		// Info: https://github.com/linkedin-developers/linkedin-api-js-client
 		const res = await fetchWithCache(`https://api.linkedin.com/rest/memberSnapshotData?${params}`, {
 			method: 'GET',
 			headers: {

@@ -1,0 +1,14 @@
+header nav li {
+	translate: 0 0;
+	transition: translate .2s ease-out;
+
+	@for $i from 1 through 5 {
+		&:nth-child(#{$i}) {
+			transition-delay: #{$i * .1}s;
+		}
+	}
+
+	@starting-style {
+		translate: 0 -100%;
+	}
+}
