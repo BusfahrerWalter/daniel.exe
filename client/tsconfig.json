@@ -10,6 +10,6 @@
 	}, {
 		"path": "./.nuxt/tsconfig.node.json"
 	}, {
-		"path": "./tsconfig.server.json"
+		"path": "../server/tsconfig.json"
 	}]
 }

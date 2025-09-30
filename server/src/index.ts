@@ -1,8 +1,8 @@
-import 'dotenv/config';
+import './env';
 import cors from 'cors';
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
-import { publicProcedure, router } from './trpc.js';
-import { getEducation, getPositions, getProfileInfo, getSkills } from './linkedin.js';
+import { publicProcedure, router } from './trpc';
+import { getEducation, getPositions, getProfileInfo, getSkills } from './linkedin';
 
 const appRouter = router({
 	linkedin: {

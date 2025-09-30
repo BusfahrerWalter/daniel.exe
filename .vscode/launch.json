@@ -10,10 +10,7 @@
 			"name": "Attach to TSX",
 			"port": 9229,
 			"restart": true,
-			"skipFiles": [
-				"<node_internals>/**",
-				"**/node_modules/**"
-			]
+			"skipFiles": []
 		}
 	]
 }
