@@ -19,7 +19,7 @@ It serves as an interactive "about-me" website built with modern web technologie
 ### Start Dev Server
 1. Install dependencies:
 	```sh
-	npm i
+	npm i # or `npm ci`
 	```
 2. Copy `.env.example` to `.env` in within the `server` folder:
 	```sh
