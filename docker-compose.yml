@@ -1,0 +1,14 @@
+services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - 7070:3000
+    restart: always
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - 3000:3000
+    restart: always

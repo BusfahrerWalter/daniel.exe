@@ -1,4 +1,4 @@
-import './env';
+import 'dotenv/config';
 import cors from 'cors';
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
 import { publicProcedure, router } from './trpc';
@@ -38,4 +38,7 @@ const server = createHTTPServer({
 	}
 });
 
-server.listen(process.env.HTTP_SEVER_PORT ?? 3000);
+const port = process.env.HTTP_SEVER_PORT ?? 3000;
+server.listen(port, () => {
+	console.log('Server listening on port:', port);
+});

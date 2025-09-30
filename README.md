@@ -5,9 +5,9 @@
 	```sh
 	npm i
 	```
-2. Copy `.env.example` to `.env` in the project root:
+2. Copy `.env.example` to `.env` in within the `server` folder:
 	```sh
-	cp .env.example .env
+	cp server/.env.example server/.env
 	```
 3. Fill out all required environment variables in `.env`.
 4. Start the development server:
