@@ -3,9 +3,6 @@
 # =========================================================================================
 FROM node:alpine AS builder
 
-ARG LINKEDIN_API_KEY
-ENV LINKEDIN_API_KEY=${LINKEDIN_API_KEY}
-
 WORKDIR /app
 
 COPY . .

@@ -1,11 +1,4 @@
-import 'dotenv/config';
 import { defineNuxtConfig } from "nuxt/config";
-
-const publicEnvVars = {
-	apiBase: process.env.API_URL
-};
-
-console.log('Using public environment variables:', publicEnvVars);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -31,6 +24,8 @@ export default defineNuxtConfig({
 		}
 	},
 	runtimeConfig: {
-		public: publicEnvVars
+		public: {
+			apiBase: process.env.NUXT_PUBLIC_API_BASE
+		}
 	}
 })

@@ -6,9 +6,6 @@ import type { T } from './Util.js';
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiBase as string;
 
-console.log(config);
-
-
 // Initialize the tRPC client
 const trpc = createTRPCClient<AppRouter>({
 	links: [

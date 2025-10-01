@@ -3,9 +3,6 @@
 # =========================================================================================
 FROM node:alpine AS builder
 
-ARG API_URL
-ENV API_URL=${API_URL}
-
 WORKDIR /app
 
 COPY . .

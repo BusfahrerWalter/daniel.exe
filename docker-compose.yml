@@ -1,15 +1,12 @@
 # Reminder: port mapping "host:container"
-# This compose is not meant for production environments
 
 services:
   client:
     restart: always
     build:
       context: ./client
-      args:
-        # pass this as build argument because its needed during the application build
-        # env vars are only available within the runner stage
-        - API_URL=$API_URL
+    environment:
+      - NUXT_PUBLIC_API_BASE
     ports:
       - 7070:3000
     networks:
@@ -20,7 +17,12 @@ services:
     build:
       context: ./server
     environment:
-      - LINKEDIN_API_KEY=$LINKEDIN_API_KEY
+      - LINKEDIN_API_KEY
+      - CORS_ALLOWED_METHODS
+      - CORS_ALLOWED_ORIGINS
+      - HTTP_SEVER_PORT
+      - HTTP_CACHE_PATH
+      - HTTP_CACHE_TTL
     ports:
       - 3000:3000
     networks:
