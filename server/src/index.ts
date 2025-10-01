@@ -2,7 +2,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
 import { publicProcedure, router } from './trpc';
-import { getEducation, getPositions, getProfileInfo, getSkills } from './linkedin';
+import { getEducation, getPositions, getProfileInfo, getProjects, getSkills } from './linkedin';
 
 const appRouter = router({
 	linkedin: {
@@ -10,6 +10,7 @@ const appRouter = router({
 		skills: publicProcedure.query(getSkills),
 		positions: publicProcedure.query(getPositions),
 		education: publicProcedure.query(getEducation),
+		projects: publicProcedure.query(getProjects)
 	}
 });
 

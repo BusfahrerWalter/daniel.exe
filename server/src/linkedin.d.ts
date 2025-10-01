@@ -5,6 +5,7 @@ export interface SnapshotData extends Record<SnapshotDomain, any> {
 	SKILLS: SkillSnapshot[];
 	POSITIONS: PositionSnapshot[];
 	EDUCATION: EducationSnapshot[];
+	PROJECTS: ProjectSnapshot[];
 }
 
 export interface ProfileSnapshot {
@@ -43,4 +44,12 @@ export interface EducationSnapshot {
 	schoolName: string;
 	endDate: string;
 	notes: string;
+}
+
+export interface ProjectSnapshot {
+	title: string;
+	description: string;
+	finishedOn: string;
+	startedOn: string;
+	url: string;
 }

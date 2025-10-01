@@ -21,8 +21,9 @@ It serves as an interactive "about-me" website built with modern web technologie
 	```sh
 	npm i    # or `npm ci`
 	```
-2. Copy `.env.example` to `.env` in within the `server` folder:
+2. Copy `.env.example` to `.env` in within the `client` and the `server` folders:
 	```sh
+	cp client/.env.example client/.env
 	cp server/.env.example server/.env
 	```
 3. Fill out all required environment variables in `.env`.
@@ -31,7 +32,15 @@ It serves as an interactive "about-me" website built with modern web technologie
 	npm run dev
 	```
 
-### Start in Docker
+## Docker
+> **Note:** `.env` files are **not** copied into Docker containers. All required environment variables must be explicitly declared in the `docker-compose.yml` or `Dockerfile`.
+
+### Start locally
 ```sh
 docker compose up
+```
+
+### Build and deploy
+```sh
+docker compose build
 ```

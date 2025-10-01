@@ -1,7 +1,10 @@
-import { createTRPCClient, httpBatchStreamLink, httpSubscriptionLink, splitLink } from '@trpc/client';
-import type { AppRouter } from '../../server/index.js';
 import superjson from 'superjson';
+import { createTRPCClient, httpBatchStreamLink, httpSubscriptionLink, splitLink } from '@trpc/client';
+import type { AppRouter } from '../../../server/src/index';
 import type { T } from './Util.js';
+
+const config = useRuntimeConfig();
+const apiUrl = config.public.apiBase as string;
 
 // Initialize the tRPC client
 const trpc = createTRPCClient<AppRouter>({
@@ -9,11 +12,11 @@ const trpc = createTRPCClient<AppRouter>({
 		splitLink({
 			condition: (op) => op.type === 'subscription',
 			true: httpSubscriptionLink({
-				url: 'http://localhost:3000',
+				url: apiUrl,
 				transformer: superjson
 			}),
 			false: httpBatchStreamLink({
-				url: 'http://localhost:3000',
+				url: apiUrl,
 				transformer: superjson
 			}),
 		}),
