@@ -58,32 +58,31 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       # =============================================== Client things ===============================================
-      # # Extract metadata (tags, labels) for Docker
-      # # https://github.com/docker/metadata-action
-      # - name: Extract Docker metadata (client)
-      #   id: meta-client
-      #   uses: docker/metadata-action@v5 # v5.0.0
-      #   with:
-      #     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-client
-      #     flavor: |
-      #       latest=auto
-      #     tags: |
-      #       type=ref,event=branch
-      #       type=ref,event=tag
-      #       type=sha
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata (client)
+        id: meta-client
+        uses: docker/metadata-action@v5 # v5.0.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-client
+          flavor: |
+            latest=true
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
 
-      # # Build and push Docker image with Buildx (don't push on PR)
-      # # https://github.com/docker/build-push-action
-      # - name: Build and push Docker image (client)
-      #   id: build-and-push-client
-      #   uses: docker/build-push-action@v5 # v5.0.0
-      #   with:
-      #     context: ./client
-      #     push: ${{ github.event_name != 'pull_request' }}
-      #     tags: ${{ steps.meta-client.outputs.tags }}
-      #     labels: ${{ steps.meta-client.outputs.labels }}
-      #     cache-from: type=gha
-      #     cache-to: type=gha,mode=max
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image (client)
+        id: build-and-push-client
+        uses: docker/build-push-action@v5 # v5.0.0
+        with:
+          context: ./client
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta-client.outputs.tags }}
+          labels: ${{ steps.meta-client.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       # =============================================== Server things ===============================================
       - name: Extract Docker metadata (server)
@@ -92,7 +91,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-server
           flavor: |
-            latest=auto
+            latest=true
           tags: |
             type=ref,event=branch
             type=ref,event=tag
