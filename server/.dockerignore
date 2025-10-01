@@ -1,7 +1,8 @@
 **/node_modules/
-**/dist
-npm-debug.log
+
+dist
 .http-cache
+
 .git
 .coverage
 .env

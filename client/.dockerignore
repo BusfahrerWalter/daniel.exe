@@ -1,8 +1,9 @@
 **/node_modules/
-**/.output
-npm-debug.log
+
+.output
 .nuxt
 .data
+
 .git
 .coverage
 .env

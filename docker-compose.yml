@@ -1,14 +1,31 @@
+# Reminder: port mapping "host:container"
+# This compose is not meant for production environments
+
 services:
   client:
+    restart: always
     build:
       context: ./client
+      args:
+        # pass this as build argument because its needed during the application build
+        # env vars are only available within the runner stage
+        - API_URL=$API_URL
     ports:
       - 7070:3000
-    restart: always
+    networks:
+      - about-me-net
 
   server:
+    restart: always
     build:
       context: ./server
+    environment:
+      - LINKEDIN_API_KEY=$LINKEDIN_API_KEY
     ports:
       - 3000:3000
-    restart: always
+    networks:
+      - about-me-net
+
+networks:
+  about-me-net:
+    driver: bridge

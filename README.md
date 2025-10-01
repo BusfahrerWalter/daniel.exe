@@ -5,7 +5,7 @@
 	<img src="https://img.shields.io/maintenance/yes/2025">
 	<img src="https://img.shields.io/github/repo-size/BusfahrerWalter/daniel.exe">
 	<br>
-	<img src="https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg">
+	<!-- <img src="https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg"> -->
 </p>
 
 ## ✨ Overview
@@ -42,12 +42,18 @@
 	npm run dev
 	```
 
-## Docker
+## 📦 Docker
 > **Note:** `.env` files are **not** copied into Docker containers. All required environment variables must be explicitly declared in the `docker-compose.yml` or `Dockerfile`.
 
 ### Start locally
+Use the `--env-file` flag to load environment variables from the corresponding `.env` files.
+<br>
+For development/test purposes, this is fine.
 ```sh
-docker compose up
+docker compose \
+	--env-file ./client/.env \
+	--env-file ./server/.env \
+	up
 ```
 
 ### Build and deploy

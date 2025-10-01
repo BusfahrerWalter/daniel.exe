@@ -1,6 +1,12 @@
 import 'dotenv/config';
 import { defineNuxtConfig } from "nuxt/config";
 
+const publicEnvVars = {
+	apiBase: process.env.API_URL
+};
+
+console.log('Using public environment variables:', publicEnvVars);
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
@@ -25,8 +31,6 @@ export default defineNuxtConfig({
 		}
 	},
 	runtimeConfig: {
-		public: {
-			apiBase: process.env.API_URL
-		}
+		public: publicEnvVars
 	}
 })
