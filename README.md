@@ -4,6 +4,9 @@
 	<img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red.svg">
 	<img src="https://img.shields.io/maintenance/yes/2025">
 	<img src="https://img.shields.io/github/repo-size/BusfahrerWalter/daniel.exe">
+	<a href="https://github.com/BusfahrerWalter/daniel.exe/actions/workflows/docker-publish.yml">
+		<img src="https://github.com/BusfahrerWalter/daniel.exe/actions/workflows/docker-publish.yml/badge.svg">
+	</a>
 	<br>
 	<!-- <img src="https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg"> -->
 </p>
