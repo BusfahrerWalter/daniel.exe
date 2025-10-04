@@ -2,8 +2,11 @@
 
 <p align="center">
 	<img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red.svg">
-	<img src="https://img.shields.io/maintenance/yes/2025">
 	<img src="https://img.shields.io/github/repo-size/BusfahrerWalter/daniel.exe">
+	<img src="https://img.shields.io/maintenance/yes/2025">
+	<a href="https://github.com/BusfahrerWalter/daniel.exe/actions/workflows/docker-publish.yml">
+		<img src="https://github.com/BusfahrerWalter/daniel.exe/actions/workflows/docker-publish.yml/badge.svg">
+	</a>
 	<br>
 	<!-- <img src="https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg"> -->
 </p>
@@ -43,7 +46,7 @@
 	```
 
 ## 📦 Docker
-> **Note:** `.env` files are **not** copied into Docker containers. All required environment variables must be explicitly declared in the `docker-compose.yml` or `Dockerfile`.
+> **Note:** `.env` files are **not** copied into Docker containers. All required environment variables must be explicitly declared in the `docker-compose.yml`.
 
 ### Start locally
 Use the `--env-file` flag to load environment variables from the corresponding `.env` files.
