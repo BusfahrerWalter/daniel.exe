@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import { init as initDataManager } from './core/DataManager';
 import { getUrlParam } from './core/Util';
 
 const bootDone = ref(getUrlParam('skipBoot') !== null);
+const config = useRuntimeConfig();
 
-function onBootDone() {
-	bootDone.value = true;
-}
+window.app = {
+	apiBase: config.public.apiBase as string
+};
+
+initDataManager();
 </script>
 
 <template>
@@ -13,6 +17,6 @@ function onBootDone() {
 		<Main />
 	</template>
 	<template v-else>
-		<Boot @boot-done="onBootDone" />
+		<Boot @boot-done="bootDone = true" />
 	</template>
 </template>

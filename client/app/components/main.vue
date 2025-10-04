@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 import type { TransitionProps } from 'vue'
+import { getProfileInfo } from '~/core/DataManager';
 
 const headerNav: NavigationMenuItem[] = [
 	{ label: 'Home', to: '/' },
@@ -60,11 +61,19 @@ const pageTransition: TransitionProps = {
 	onAfterEnter: clearClasses,
 	onAfterLeave: clearClasses
 };
+
+const info = ref(await getProfileInfo());
 </script>
 
 <template>
 	<UApp>
 		<UHeader>
+			<template #title>
+				<span class="text-muted">&lt;</span>
+				<span>{{ info.firstName }} {{ info.lastName }}</span>
+				<span class="text-muted">/&gt;</span>
+			</template>
+
 			<template #default>
 				<UNavigationMenu :items="headerNav" variant="link" />
 			</template>

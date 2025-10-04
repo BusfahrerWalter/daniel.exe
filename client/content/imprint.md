@@ -19,11 +19,7 @@ zipCode: string;
 ### Angaben gemäß § 5 TMG
 {{ firstName }} {{ lastName }}
 <br>
-Seidelweg 32
-<br>
-{{ zipCode }} Wallersdorf
-<br>
-Deutschland
+{{ address }}
 
 ### Kontakt
 E-Mail: hi@adam-sandler.de
