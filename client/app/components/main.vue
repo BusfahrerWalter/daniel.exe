@@ -3,15 +3,16 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 import type { TransitionProps } from 'vue'
 import { getProfileInfo } from '~/core/DataManager';
 
-const headerNav: NavigationMenuItem[] = [
+const headerItems: NavigationMenuItem[] = [
 	{ label: 'Home', to: '/' },
 	{ label: 'Projects', to: '/projects' },
 	{ label: 'Curriculum Vitae', to: '/cv' }
 ];
 
-const items: NavigationMenuItem[] = [
+const srcUrl = 'https://github.com/BusfahrerWalter/daniel.exe';
+const footerItems: NavigationMenuItem[] = [
 	{ label: 'Website', to: 'https://adam-sandler.de', target: '_blank' },
-	{ label: 'Source', to: 'https://github.com/BusfahrerWalter/daniel.exe', target: '_blank' },
+	{ label: 'Source', to: srcUrl, target: '_blank' },
 	{ label: 'Imprint', to: '/imprint', target: '_self' }
 ];
 
@@ -74,8 +75,23 @@ const info = ref(await getProfileInfo());
 				<span class="text-muted">/&gt;</span>
 			</template>
 
-			<template #default>
-				<UNavigationMenu :items="headerNav" variant="link" />
+			<UNavigationMenu :items="headerItems" variant="link" />
+
+			<template #right>
+				<UColorModeButton />
+
+				<UButton
+					color="neutral"
+					variant="ghost"
+					:to="srcUrl"
+					target="_blank"
+					icon="i-simple-icons-github"
+					aria-label="GitHub"
+				/>
+			</template>
+
+			<template #body>
+				<UNavigationMenu :items="headerItems" orientation="vertical" class="-mx-2.5" />
 			</template>
 		</UHeader>
 
@@ -96,7 +112,7 @@ const info = ref(await getProfileInfo());
 				</p>
 			</template>
 
-			<UNavigationMenu :items="items" variant="link" />
+			<UNavigationMenu :items="footerItems" variant="link" />
 
 			<template #right>
 				<UButton v-for="social in socials" :icon="social.icon" color="neutral" variant="ghost" :to="social.url"
