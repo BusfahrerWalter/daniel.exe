@@ -42,3 +42,9 @@ export function duration(from?: string | Date, to?: string | Date): string {
 
 	return result;
 }
+
+export async function sleep(delay: number): Promise<void> {
+	return new Promise(resolve => {
+		setTimeout(resolve, delay);
+	});
+}

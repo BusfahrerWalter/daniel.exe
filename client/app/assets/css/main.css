@@ -6,14 +6,6 @@
 	--page-scroll-curve: ease-in-out;
 }
 
-.main {
-	min-height: calc(100vh - var(--ui-header-height) - 81px);
-}
-
-.main:has(.page-animated) {
-	overflow: hidden;
-}
-
 .page-scroll-in-r {
 	animation: page-scroll-in var(--page-scroll-duration) var(--page-scroll-curve) forwards;
 	animation-delay: .25s;

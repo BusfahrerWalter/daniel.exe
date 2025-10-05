@@ -4,7 +4,7 @@ import type { TransitionProps } from 'vue'
 import { getProfileInfo } from '~/core/DataManager';
 
 const headerItems: NavigationMenuItem[] = [
-	{ label: 'Home', to: '/' },
+	{ label: 'Home', to: '/home' },
 	{ label: 'Projects', to: '/projects' },
 	{ label: 'Curriculum Vitae', to: '/cv' }
 ];
@@ -68,7 +68,7 @@ const info = ref(await getProfileInfo());
 
 <template>
 	<UApp>
-		<UHeader>
+		<UHeader class="header">
 			<template #title>
 				<span class="text-muted">&lt;</span>
 				<span>{{ info.firstName }} {{ info.lastName }}</span>
@@ -103,9 +103,12 @@ const info = ref(await getProfileInfo());
 			</div>
 		</UMain>
 
-		<USeparator icon="i-simple-icons-nuxtdotjs" type="dashed" class="h-px" />
+		<effects-goo class="effect" />
+		<div class="background"></div>
 
-		<UFooter>
+		<USeparator icon="tabler:code" type="dashed" class="icon-border h-px" />
+
+		<UFooter class="footer backdrop-blur bg-default/75">
 			<template #left>
 				<p class="text-muted text-sm">
 					Copyright &copy; {{ new Date().getFullYear() }}
@@ -121,4 +124,46 @@ const info = ref(await getProfileInfo());
 		</UFooter>
 	</UApp>
 </template>
+
+<style lang="scss">
+.dark .background {
+	position: fixed;
+	inset: 0;
+	background: radial-gradient(1200px 800px at 80% 20%, #2d2f55 0%, var(--ui-bg) 70%);
+	background-position: 0 0;
+}
+
+.header {
+	z-index: 100;
+}
+
+.footer {
+	position: relative;
+	z-index: 100;
+}
+
+.main {
+	position: relative;
+	z-index: 10;
+	min-height: calc(100vh - var(--ui-header-height) - 81px);
+	height: auto;
+
+	&:has(.page-animated) {
+		overflow: hidden;
+	}
+}
+
+.effect {
+	z-index: 1;
+}
+
+.background {
+	z-index: 0;
+}
+
+.icon-border {
+	position: relative;
+	z-index: 110;
+}
+</style>
 
