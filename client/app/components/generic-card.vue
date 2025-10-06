@@ -39,7 +39,13 @@ const dateDuration = computed(() => {
 
 <style>
 .card {
-	background-color: rgb(from var(--color-gray-900) r g b / .8);
+	--bg: var(--color-gray-900);
+
+	background-color: rgb(from var(--bg) r g b / .8);
 	backdrop-filter: blur(7px);
+}
+
+.light .card {
+	--bg: var(--color-white);
 }
 </style>
