@@ -18,6 +18,11 @@ export default defineNuxtConfig({
 		'~/assets/css/styles.scss',
 		'~/assets/css/md.scss'
 	],
+	colorMode: {
+		preference: 'system',
+		fallback: 'light',
+		storageKey: 'nuxt-color-mode'
+	},
 	routeRules: {
 		'/': {
 			redirect: '/home'

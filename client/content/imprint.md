@@ -12,6 +12,10 @@ twitterHandles: string;
 websites: string;
 address: string;
 zipCode: string;
+country: string;
+street: string;
+city: string;
+nr: string;
 ---
 
 ## Impressum
@@ -19,10 +23,14 @@ zipCode: string;
 ### Angaben gemäß § 5 TMG
 {{ firstName }} {{ lastName }}
 <br>
-{{ address }}
+{{ street }} {{ nr }}
+<br>
+{{ zipCode }} {{ city }}
+<br>
+{{ country }}
 
 ### Kontakt
-E-Mail: hi@adam-sandler.de
+E-Mail: inbox@adam-sandler.de
 <br>
 Website: [adam-sandler.de](https://adam-sandler.de)
 

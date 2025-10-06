@@ -18,11 +18,13 @@ function bootDone() {
 onUnmounted(() => {
 	window.removeEventListener('keydown', bootDone);
 	window.removeEventListener('mousedown', bootDone);
+	window.removeEventListener('touchstart', bootDone);
 });
 
 onMounted(() => {
 	window.addEventListener('keydown', bootDone);
 	window.addEventListener('mousedown', bootDone);
+	window.addEventListener('touchstart', bootDone);
 
 	if (preRef.value && cursorRef.value) {
 		boot(preRef.value, cursorRef.value);

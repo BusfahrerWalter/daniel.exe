@@ -1,14 +1,11 @@
+import { Vector } from "./Vector";
+
 export interface TerminalWriterOptions {
 	username: string;
 	distro: string;
 	startWithPath?: boolean;
 	cursor?: HTMLElement;
 	writeDelay?: number;
-}
-
-export interface Position {
-	x: number;
-	y: number;
 }
 
 export class TerminalWriter {
@@ -31,27 +28,24 @@ export class TerminalWriter {
 		return lastLine ? lastLine.endsWith(this.path) : false;
 	}
 
-	public get cursorIndex(): Position {
+	public get cursorIndex(): Vector {
 		const lineIndex = this.lines.length - 1;
 		const line = this.lines[lineIndex];
 		if (!line) {
-			return { x: 0, y: 0 };
+			return Vector.zero;
 		}
 
-		return {
-			y: lineIndex,
-			x: line.length ?? 0
-		};
+		return new Vector(line.length ?? 0, lineIndex);
 	}
 
-	public get cursorPosition(): Position {
+	public get cursorPosition(): Vector {
 		const index = this.cursorIndex;
 		const lineToCharHeightDiff = this.lineHeight - this.charHeight;
 
-		return {
-			x: index.x * this.charWidth,
-			y: index.y * this.lineHeight + lineToCharHeightDiff / 2
-		};
+		return new Vector(
+			index.x * this.charWidth,
+			index.y * this.lineHeight + lineToCharHeightDiff / 2
+		);
 	}
 
 	private readonly computedElementStyle: CSSStyleDeclaration;
@@ -60,11 +54,11 @@ export class TerminalWriter {
 	private readonly charWidth: number;
 	private readonly charHeight: number;
 	private readonly lineHeight: number;
-	
+
 	constructor(
-		public readonly el: HTMLElement, 
+		public readonly el: HTMLElement,
 		public readonly opts: TerminalWriterOptions
-	) { 
+	) {
 		this.computedElementStyle = window.getComputedStyle(this.el);
 
 		const metrics = this.getTextMetrics();
@@ -185,7 +179,7 @@ export class TerminalWriter {
 			return;
 		}
 
-		const cursorPos = this.cursorPosition;	
+		const cursorPos = this.cursorPosition;
 		this.opts.cursor.style.translate = `${cursorPos.x}px ${cursorPos.y}px`;
 	}
 }

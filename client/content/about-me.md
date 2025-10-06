@@ -15,7 +15,7 @@ websites: string;
 ### 👋 Hi, I'm {{ firstName }} {{ lastName }}
 
 Welcome to my portfolio page! <br>
-Here you can get a quick peek into my background, interests, and what keeps me coding.
+Here you can get a quick peek into my background, interests and *„skills“*.
 
 ### 🚀 Quick Facts
 - **Location:** {{ geoLocation }}

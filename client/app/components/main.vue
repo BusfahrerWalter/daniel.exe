@@ -3,15 +3,16 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 import type { TransitionProps } from 'vue'
 import { getProfileInfo } from '~/core/DataManager';
 
-const headerNav: NavigationMenuItem[] = [
-	{ label: 'Home', to: '/' },
+const headerItems: NavigationMenuItem[] = [
+	{ label: 'Home', to: '/home' },
 	{ label: 'Projects', to: '/projects' },
 	{ label: 'Curriculum Vitae', to: '/cv' }
 ];
 
-const items: NavigationMenuItem[] = [
+const srcUrl = 'https://github.com/BusfahrerWalter/daniel.exe';
+const footerItems: NavigationMenuItem[] = [
 	{ label: 'Website', to: 'https://adam-sandler.de', target: '_blank' },
-	{ label: 'Source', to: 'https://github.com/BusfahrerWalter/daniel.exe', target: '_blank' },
+	{ label: 'Source', to: srcUrl, target: '_blank' },
 	{ label: 'Imprint', to: '/imprint', target: '_self' }
 ];
 
@@ -67,15 +68,30 @@ const info = ref(await getProfileInfo());
 
 <template>
 	<UApp>
-		<UHeader>
+		<UHeader class="header">
 			<template #title>
 				<span class="text-muted">&lt;</span>
 				<span>{{ info.firstName }} {{ info.lastName }}</span>
 				<span class="text-muted">/&gt;</span>
 			</template>
 
-			<template #default>
-				<UNavigationMenu :items="headerNav" variant="link" />
+			<UNavigationMenu :items="headerItems" variant="link" />
+
+			<template #right>
+				<UColorModeButton />
+
+				<UButton
+					color="neutral"
+					variant="ghost"
+					:to="srcUrl"
+					target="_blank"
+					icon="i-simple-icons-github"
+					aria-label="GitHub"
+				/>
+			</template>
+
+			<template #body>
+				<UNavigationMenu :items="headerItems" orientation="vertical" class="-mx-2.5" />
 			</template>
 		</UHeader>
 
@@ -87,16 +103,19 @@ const info = ref(await getProfileInfo());
 			</div>
 		</UMain>
 
-		<USeparator icon="i-simple-icons-nuxtdotjs" type="dashed" class="h-px" />
+		<effects-goo class="effect" />
+		<div class="background"></div>
 
-		<UFooter>
+		<USeparator icon="tabler:code" type="dashed" class="icon-border h-px" />
+
+		<UFooter class="footer backdrop-blur bg-default/75">
 			<template #left>
 				<p class="text-muted text-sm">
 					Copyright &copy; {{ new Date().getFullYear() }}
 				</p>
 			</template>
 
-			<UNavigationMenu :items="items" variant="link" />
+			<UNavigationMenu :items="footerItems" variant="link" />
 
 			<template #right>
 				<UButton v-for="social in socials" :icon="social.icon" color="neutral" variant="ghost" :to="social.url"
@@ -105,4 +124,46 @@ const info = ref(await getProfileInfo());
 		</UFooter>
 	</UApp>
 </template>
+
+<style lang="scss">
+.dark .background {
+	position: fixed;
+	inset: 0;
+	background: radial-gradient(1200px 800px at 80% 20%, #2d2f55 0%, var(--ui-bg) 70%);
+	background-position: 0 0;
+}
+
+.header {
+	z-index: 100;
+}
+
+.footer {
+	position: relative;
+	z-index: 100;
+}
+
+.main {
+	position: relative;
+	z-index: 10;
+	min-height: calc(100vh - var(--ui-header-height) - 81px);
+	height: auto;
+
+	&:has(.page-animated) {
+		overflow: hidden;
+	}
+}
+
+.effect {
+	z-index: 1;
+}
+
+.background {
+	z-index: 0;
+}
+
+.icon-border {
+	position: relative;
+	z-index: 110;
+}
+</style>
 

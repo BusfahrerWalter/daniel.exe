@@ -16,7 +16,7 @@ const dateDuration = computed(() => {
 </script>
 
 <template>
-	<div class="rounded-lg border border-gray-200 bg-white dark:bg-gray-900 shadow-sm p-6 mb-4 flex flex-col gap-2">
+	<div class="card rounded-lg border border-gray-200 bg-white dark:bg-gray-900 shadow-sm p-6 mb-4 flex flex-col gap-2">
 		<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
 			<div>
 				<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ props.title }}</h3>
@@ -36,3 +36,16 @@ const dateDuration = computed(() => {
 		</div>
 	</div>
 </template>
+
+<style>
+.card {
+	--bg: var(--color-gray-900);
+
+	background-color: rgb(from var(--bg) r g b / .8);
+	backdrop-filter: blur(7px);
+}
+
+.light .card {
+	--bg: var(--color-white);
+}
+</style>
