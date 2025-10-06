@@ -15,6 +15,8 @@ RUN npm run build
 # =========================================================================================
 FROM node:alpine AS runner
 
+LABEL org.opencontainers.image.description "About me client package"
+
 WORKDIR /app
 EXPOSE 3000
 
