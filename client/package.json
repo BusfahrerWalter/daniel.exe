@@ -21,6 +21,7 @@
 		"better-sqlite3": "^12.4.1",
 		"eslint": "^9.36.0",
 		"nuxt": "^4.1.2",
+		"onekojs": "^1.1.0",
 		"superjson": "^2.2.2",
 		"typescript": "^5.9.2",
 		"vue": "^3.5.21",

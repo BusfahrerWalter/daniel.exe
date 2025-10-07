@@ -23,6 +23,14 @@ export default defineNuxtConfig({
 		fallback: 'light',
 		storageKey: 'nuxt-color-mode'
 	},
+	app: {
+		head: {
+			meta: [{
+				name: 'color-scheme',
+				content: 'dark light'
+			}]
+		}
+	},
 	routeRules: {
 		'/': {
 			redirect: '/home'
@@ -30,6 +38,7 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
+			title: 'Daniel Müller',
 			apiBase: process.env.NUXT_PUBLIC_API_BASE
 		}
 	}

@@ -21,7 +21,7 @@ Here you can get a quick peek into my background, interests and *„skills“*.
 - **Location:** {{ geoLocation }}
 - **Profession:** {{ industry }}
 - **Interests:** Coding, Open Source, Gaming, <sub class="text-muted">(occasionally avoiding people)</sub>
-- **Contact:** [hi@adam-sandler.de]
+- **Contact:** [hi@dani3l.dev]
 
 ### 🧑‍💻 Background
 I got into programming pretty early on, somewhere around 13 or 14, and quickly <br>
