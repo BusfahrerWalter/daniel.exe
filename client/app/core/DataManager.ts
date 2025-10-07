@@ -12,11 +12,11 @@ export function init() {
 			splitLink({
 				condition: (op) => op.type === 'subscription',
 				true: httpSubscriptionLink({
-					url: 'http://localhost:3000',
+					url: window.app.apiBase,
 					transformer: superjson
 				}),
 				false: httpBatchStreamLink({
-					url: 'http://localhost:3000',
+					url: window.app.apiBase,
 					transformer: superjson
 				})
 			})
