@@ -52,7 +52,7 @@ function getInitialPosition() {
 		pos.y = 200;
 	} else {
 		// bottom right
-		pos.x = Math.min(window.innerWidth / 2 + 300, window.innerWidth - 100);
+		pos.x = Math.min(window.innerWidth / 2 + 900, window.innerWidth - 200);
 		pos.y = window.innerHeight - 320;
 	}
 
@@ -68,7 +68,7 @@ function getInitialPosition() {
 			ref="nekoText"
 			class="neko-text"
 			text="Pet the cat!"
-			:initial-delay="4000"
+			:initial-delay="7000"
 		/>
 	</div>
 </template>

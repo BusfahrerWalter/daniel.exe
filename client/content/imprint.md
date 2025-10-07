@@ -30,9 +30,9 @@ nr: string;
 {{ country }}
 
 ### Kontakt
-E-Mail: inbox@adam-sandler.de
+E-Mail: inbox@dani3l.dev
 <br>
-Website: [adam-sandler.de](https://adam-sandler.de)
+Website: [dani3l.dev](https://dani3l.dev)
 
 ### Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
 {{ firstName }} {{ lastName }}

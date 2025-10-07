@@ -2,7 +2,7 @@
 import { init as initDataManager } from './core/DataManager';
 import { getUrlParam } from './core/Util';
 
-const bootDone = ref(getUrlParam('skipBoot') !== null);
+const bootDone = ref(getUrlParam('showBoot') === null);
 const config = useRuntimeConfig();
 
 window.app = {

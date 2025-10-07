@@ -38,10 +38,11 @@ onMounted(async () => {
 		await sleep(props.initialDelay);
 	}
 
-	if (props.text) {
+	if (typeof props.text === 'string') {
 		await scrambleTo(props.text);
-	} else if (props.texts?.length) {
-		displayText.value = props.texts[0]!;
+	}
+
+	if (props.texts?.length) {
 		await sleep(10);
 		await cycleTexts(props.texts);
 	}
