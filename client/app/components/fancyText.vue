@@ -2,9 +2,16 @@
 import { useMediaQuery } from '@vueuse/core'
 import { random, sleep } from '~/core/Util'
 
+export type FancyTextExpose = {
+	$el: HTMLElement,
+	displayText: any,
+	setText: (text: string) => Promise<void>
+}
+
 type Props = {
 	text?: string
 	texts?: string[]
+	initialDelay?: number;
 	delay?: number          // glyph refresh cadence (ms-ish, but time-based)
 	textDelay?: number      // pause between texts in the list (ms)
 	chars?: string          // glyph set
@@ -12,6 +19,7 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+	initialDelay: 0,
 	delay: 50,
 	textDelay: 2200,
 	chars: '!<>-_\\/[]{}—=+*^?#$%&@ 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -25,6 +33,11 @@ let abortCycle = false;
 
 onMounted(async () => {
 	abortCycle = false;
+
+	if (props.initialDelay > 0) {
+		await sleep(props.initialDelay);
+	}
+
 	if (props.text) {
 		await scrambleTo(props.text);
 	} else if (props.texts?.length) {
@@ -39,7 +52,10 @@ onUnmounted(() => {
 	cancelAnimationFrame(animationFrameId);
 });
 
-defineExpose({ displayText, scrambleTo });
+defineExpose({
+	displayText,
+	setText: scrambleTo
+});
 
 /**
  * Core scrambler: time-based, character slots with random start/end.

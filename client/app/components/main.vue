@@ -6,7 +6,7 @@ import { getProfileInfo } from '~/core/DataManager';
 const headerItems: NavigationMenuItem[] = [
 	{ label: 'Home', to: '/home' },
 	{ label: 'Projects', to: '/projects' },
-	{ label: 'Curriculum Vitae', to: '/cv' }
+	{ label: 'Curriculum Vitae', to: '/curriculum-vitae' }
 ];
 
 const srcUrl = 'https://github.com/BusfahrerWalter/daniel.exe';
@@ -63,16 +63,20 @@ const pageTransition: TransitionProps = {
 	onAfterLeave: clearClasses
 };
 
+const route = useRoute();
 const info = ref(await getProfileInfo());
+const nekoEnabled = ref(false);
 </script>
 
 <template>
 	<UApp>
 		<UHeader class="header">
 			<template #title>
-				<span class="text-muted">&lt;</span>
-				<span>{{ info.firstName }} {{ info.lastName }}</span>
-				<span class="text-muted">/&gt;</span>
+				<div class="title">
+					<span class="title-bracket text-muted">&lt;</span>
+					<span class="mx-1">{{ info.firstName }} {{ info.lastName }}</span>
+					<span class="title-bracket text-muted">/&gt;</span>
+				</div>
 			</template>
 
 			<UNavigationMenu :items="headerItems" variant="link" />
@@ -104,6 +108,11 @@ const info = ref(await getProfileInfo());
 		</UMain>
 
 		<effects-goo class="effect" />
+		<effects-oneko
+			v-if="route.name === 'home' || nekoEnabled"
+			@click="nekoEnabled = true"
+		/>
+
 		<div class="background"></div>
 
 		<USeparator icon="tabler:code" type="dashed" class="icon-border h-px" />
@@ -164,6 +173,28 @@ const info = ref(await getProfileInfo());
 .icon-border {
 	position: relative;
 	z-index: 110;
+}
+
+.title {
+	.title-bracket {
+		display: inline-block;
+		translate: 0 0;
+		transition: translate .3s ease-in-out, color .3s ease-in-out;
+	}
+
+	&:hover .title-bracket {
+		color: var(--ui-primary);
+
+		&:first-of-type {
+			translate: -5px 0;
+			transition: translate .3s ease-in-out;
+		}
+
+		&:last-of-type {
+			translate: 5px 0;
+			transition: translate .3s ease-in-out;
+		}
+	}
 }
 </style>
 
