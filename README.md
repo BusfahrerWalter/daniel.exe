@@ -21,8 +21,8 @@
 ## ⚡ Technologies
 | Tech         | Description                                 | Version   |
 |--------------|---------------------------------------------|:---------:|
-| Vue.js       | Frontend framework                          | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fclient%2Fpackage.json&query=%24.Dependencies.vue&label=%20) |
-| Nuxt         | Vue-based meta-framework for SSR and SSG    | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fclient%2Fpackage.json&query=%24.Dependencies.nuxt&label=%20) |
+| Vue.js       | Frontend framework                          | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fclient%2Fpackage.json&query=%24.dependencies.vue&label=%20) |
+| Nuxt         | Vue-based meta-framework for SSR and SSG    | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fclient%2Fpackage.json&query=%24.dependencies.nuxt&label=%20) |
 | tRPC         | Type-safe API communication                 | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fserver%2Fpackage.json&query=%24.dependencies%5B%22%40trpc%2Fserver%22%5D&label=%20) |
 | TypeScript   | Static typing for JavaScript                | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fserver%2Fpackage.json&query=%24.devDependencies.typescript&label=%20) |
 | Vite         | Fast build tool and development server      | ![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FBusfahrerWalter%2Fdaniel.exe%2Frefs%2Fheads%2Fmaster%2Fserver%2Fpackage.json&query=%24.devDependencies.vite&label=%20) |
