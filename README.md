@@ -8,7 +8,6 @@
 		<img src="https://github.com/BusfahrerWalter/daniel.exe/actions/workflows/docker-publish.yml/badge.svg">
 	</a> 
 	<br>
-	<!-- <img src="https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg"> -->
 </p>
 
 ## ✨ Overview
